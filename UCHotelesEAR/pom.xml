@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>es.unican.ps.uchoteles</groupId>
+        <artifactId>UCHoteles</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>UCHotelesEAR</artifactId>
+    <packaging>ear</packaging>
+    <name>UCHotelesEAR</name>
+    <description>Empaquetado de la aplicación en UCHoteles.ear (Figura 5 de la especificación)</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>es.unican.ps.uchoteles</groupId>
+            <artifactId>UCHotelesCommon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>es.unican.ps.uchoteles</groupId>
+            <artifactId>UCHotelesDAO</artifactId>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>es.unican.ps.uchoteles</groupId>
+            <artifactId>UCHotelesBusiness</artifactId>
+            <type>ejb</type>
+        </dependency>
+        <!-- UCHotelesWeb.war se añadirá en la práctica 3.4 -->
+    </dependencies>
+
+    <build>
+        <finalName>UCHoteles</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <version>10</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <skinnyWars>true</skinnyWars>
+                    <modules>
+                        <jarModule>
+                            <groupId>es.unican.ps.uchoteles</groupId>
+                            <artifactId>UCHotelesCommon</artifactId>
+                            <bundleFileName>UCHotelesCommon.jar</bundleFileName>
+                        </jarModule>
+                        <ejbModule>
+                            <groupId>es.unican.ps.uchoteles</groupId>
+                            <artifactId>UCHotelesDAO</artifactId>
+                            <bundleFileName>UCHotelesDAO.jar</bundleFileName>
+                        </ejbModule>
+                        <ejbModule>
+                            <groupId>es.unican.ps.uchoteles</groupId>
+                            <artifactId>UCHotelesBusiness</artifactId>
+                            <bundleFileName>UCHotelesBusiness.jar</bundleFileName>
+                        </ejbModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

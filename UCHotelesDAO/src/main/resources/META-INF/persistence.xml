@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <!--
+        Provisional para poder desplegar la capa de negocio (práctica 3.2): usa la
+        fuente de datos por defecto de GlassFish. En la práctica 3.3 se cambiará por
+        el pool JDBC de MySQL (UCHotelesDB).
+    -->
+    <persistence-unit name="UCHotelesPU" transaction-type="JTA">
+        <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
+        <class>es.unican.ps.uchoteles.common.domain.Hotel</class>
+        <class>es.unican.ps.uchoteles.common.domain.Habitacion</class>
+        <class>es.unican.ps.uchoteles.common.domain.Reserva</class>
+        <class>es.unican.ps.uchoteles.common.domain.ReservaTipoHabitacion</class>
+        <class>es.unican.ps.uchoteles.common.domain.DatosCliente</class>
+        <class>es.unican.ps.uchoteles.common.domain.DatosPago</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+</persistence>
